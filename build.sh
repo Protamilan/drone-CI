@@ -2,10 +2,10 @@
 
 # Just a basic script U can improvise lateron asper ur need xD 
 
-MANIFEST="git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_10.0"
+MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni"
 DEVICE=phoenix
-DT_LINK="https://github.com/hraj9258/android_device_xiaomi_phoenix_shrp"
-DT_PATH=device/xiaomi/$DEVICE
+DT_LINK="https://github.com/Jamesgosling2004/TWRP_RMX2121"
+DT_PATH=device/realme/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -29,9 +29,11 @@ echo " mka recoveryimage done"
 
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
+version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
+OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
 
 cd out/target/product/$DEVICE
-sudo zip -r9 SHRP-phoenix.zip recovery.img
-curl -T SHRP-phoenix.zip https://oshi.at
-curl -sL https://git.io/file-transfer | sh
-./transfer wet *.zip
+mv recovery.img ${OUTFILE%.zip}.img
+zip -r9 $OUTFILE ${OUTFILE%.zip}.img
+
+curl -T $OUTFILE https://oshi.at
