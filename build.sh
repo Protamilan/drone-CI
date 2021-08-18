@@ -4,8 +4,8 @@
 abort() { echo "$1"; exit 1; }
 
 MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
-DT_PATH=device/realme/RMX2121
-DT_LINK="https://github.com/Jamesgosling2004/TWRP_RMX2121"
+DT_PATH=device/realme/RMX3092
+DT_LINK="https://github.com/Jamesgosling2004/device_realme_RMX3092"
 
 echo " ===+++ Setting up Build Environment +++==="
 mkdir ~/twrp10
