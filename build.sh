@@ -29,6 +29,7 @@ echo " lunch twrp_${DEVICE}-eng done"
 mka recoveryimage || abort " mka failed with exit status $?"
 echo " mka recoveryimage done"
 
+
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
 version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
